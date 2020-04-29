@@ -1,11 +1,6 @@
-body {
-    background-color: salmon;
-    font-family: AppleGothic;
+body{
+    background-color: lightpink;
 }
-
-/*div{*/
-/*    border: black solid 1px;*/
-/*}*/
 
 h1{
     text-align: left;
@@ -19,7 +14,6 @@ h1{
     margin: 0;
     padding: 0;
     background-color: lightcoral;
-    border-color: purple solid 8px;
     font-size: 33px;
 }
 
@@ -46,14 +40,14 @@ h1{
 }
 
 #nav li img{
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
 }
 
 /*!*animation*/
 /*firstly div setups*/
 #animation{
-    width: 1400px;
+    width: 1500px;
     height: 50px;
     text-align: center;
     background-color: hotpink;
@@ -61,6 +55,7 @@ h1{
     animation-name: firstAnimation;
     animation-duration: 3s;
     animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
 /*secondly create keyframes*/
@@ -71,18 +66,18 @@ h1{
 }
 
 #animation2{
-    width: 1400px;
+    width: 1500px;
     height: 50px;
     text-align: center;
     animation-name: secondAnimation;
     background-color: hotpink;
     animation-iteration-count: infinite;
-    animation-duration: 10s;
+    animation-duration: 20s;
 
 }
 
 @keyframes secondAnimation {
-    8% {background-color: mediumvioletred}
+    8% {background-color: mediumvioletred; left: 0px; top: 0px; font-size: 15px;}
     28%{background-color: darkblue}
     48%{background-color: mediumpurple}
     68%{background-color: lightpink}

@@ -1,0 +1,118 @@
+body{
+    background-color: lightpink;
+}
+
+
+h1{
+    text-align: center;
+    font-family: Herculanum;
+    font-size: 99px;
+}
+
+h2{
+    text-align: right;
+}
+
+#nav ul{
+    list-style: none;
+    /*no space between ul and nav div/*/
+    margin: 0;
+    padding: 0;
+    background-color: lightcoral;
+    font-size: 33px;
+}
+
+#nav li{
+    /*move-text*/
+    text-align: center;
+
+    border-bottom: purple solid 10px;
+
+    /*move all items in to one list*/
+    display: inline;
+}
+
+#nav li a{
+    color: saddlebrown;
+    margin: 66px;
+    text-decoration: none;
+}
+
+#nav li a:hover{
+    background-color: hotpink;
+    font-size: 33px;
+    font-style: oblique;
+}
+
+#nav li img{
+    width: 50px;
+    height: 50px;
+}
+
+/*!*animation*/
+/*firstly div setups*/
+#animation{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    background-color: hotpink;
+    /*    thirdly set up animation*/
+    animation-name: firstAnimation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+/*secondly create keyframes*/
+@keyframes firstAnimation {
+    /*    in keyframe we will change from ... to ...*/
+    from {background-color: hotpink}
+    to {background-color: orchid}
+}
+
+#animation2{
+    /*absolute is locate by screen*/
+    /*relative is locate by previous location*/
+    /*fixed is screen but never change*/
+    position: absolute;
+    width: 100%;
+    height: 10%px;
+    text-align: center;
+    animation-name: secondAnimation;
+    background-color: hotpink;
+    animation-iteration-count: infinite;
+    animation-duration: 5s;
+    transform: skew(15 deg, 15 deg);
+
+}
+
+@keyframes secondAnimation {
+    0% {background-color: mediumvioletred; left: 0px; top: 0px; font-size: 15px;}
+    20%{background-color: indianred; left: 400px; top: 0px; font-size: 30px;}
+    40%{background-color: mediumpurple; left: 400px; top: 400px; font-size: 45px;}
+    60%{background-color: lightpink; left: 0px; top: 400px; font-size: 30px;}
+    80%{background-color: darkorchid; left: 0px; top: 0px; font-size: 15px;}
+    100%{background-color: peachpuff}
+
+}
+
+#imageAnimation img{
+    /*!*transform: rotate(150deg);*!*/
+    /*transform-origin: center;*/
+    /*animation-name: imageRotate;*/
+    /*animation-iteration-count: infinite;*/
+    /*animation-duration: 5s;*/
+    transform: translate(100px, 200px);
+/*    transform translate change position on screen*/
+/*    transform scale change size*/
+}
+/*keyframe create animation and action in css*/
+@keyframes imageRotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(359deg);}
+}
+
+#footer{
+    text-align: right;
+
+}

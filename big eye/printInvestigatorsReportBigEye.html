@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Departments & Employees</title>
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous">
+    </script>
+    <style type="text/css">
+        button {
+            width: 20%;
+            height: 10%;
+        }
+        body{
+            font-family: "Arial";
+        }
+
+        .center{
+            margin: auto;
+            width: 60%;
+            border: 3px solid palevioletred;
+            padding: 10px;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        label{
+            text-align: right;
+            width: 140px;
+            display: block;
+            float: left;
+            clear: left;
+            margin-right: 3px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                type: 'Get',
+                dataType: 'JSON',
+                url: 'https://bigeye6.herokuapp.com/api/investigators/',
+                success: function (data) {
+                    // location.reload();
+
+                    i = 0;
+                    while (i < data.length){
+                        investigator = data[i];
+                        $("#investigator_report").append("<hr>" +
+                            "Investigator ID: " + investigator.InvestigatorID +
+                            "<br> Investigator Last Name: " + investigator.LastName +
+                            "<br>Investigator First Name: " + investigator.FirstName +
+                            "<br>Street Address: " + investigator.StreetAddress +
+                            "<br>Suburb: " + investigator.Suburb +
+                            "<br>Phone Number: " + investigator.PhoneNumbrer +
+                            "<br>Hourly Rate: " + investigator.HourlyRate );
+                        cases = getCases(investigator.investigatorID);
+                        k = 0;
+                        while (k<cases.length){
+                            $("#investigator_report").append("<br />"
+                                +"<br>Case ID: "+ cases[k].CaseID
+                                + "<br>Description: " + cases[k].Description
+                                + "<br>Status: " + cases[k].Status);
+                            k = k + 1;
+                        }
+
+                        i = i + 1;
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        });
+
+        function getCases(InvestigatorID) {
+            cases = [];
+            $.ajax({
+                type: 'Get',
+                dataType: 'JSON',
+                async: false,
+                url: 'https://bigeye6.herokuapp.com/api/cases/',
+                success: function (data) {
+                    // location.reload();
+
+                    j = 0;
+                    while (j < data.length){
+                        case1 = data[j];
+                        if (case1.investigator == InvestigatorID){
+                            cases.push(case1);
+                        }
+                        j = j + 1;
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+            return cases;
+        }
+        function print1(){
+            window.print();
+        }
+    </script>
+</head>
+<body>
+<div class="center">
+    <h1>Print Investigator's Report</h1>
+    <div id = "investigator_report"></div>
+    <button type="button" style="width: 250px"><a href="mainMenuBigEye.html"> Display Investigators Report</a></button>
+    <button type="button" ><a href="mainMenuBigEye.html"> Return</a></button>
+    <button onclick="print1()">Print Investigators Report</button>
+
+
+</div>
+
+</body>
+</html>
